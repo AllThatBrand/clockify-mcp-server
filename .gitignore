@@ -3,3 +3,6 @@ node_modules
 dist
 .dist
 .smithery
+
+# AI tools
+.claude/*.local.*
