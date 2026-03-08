@@ -9,6 +9,7 @@ import {
   TDeleteEntrySchema,
   TEditEntrySchema,
 } from "../types";
+import { sanitizeError } from "../utils/sanitize-error";
 
 export const createEntryTool: McpToolConfig = {
   name: TOOLS_CONFIG.entries.create.name,
@@ -52,8 +53,8 @@ export const createEntryTool: McpToolConfig = {
           },
         ],
       };
-    } catch (error: any) {
-      throw new Error(`Failed to create entry: ${error.message}`);
+    } catch (error) {
+      sanitizeError("Failed to create entry", error);
     }
   },
 };
@@ -115,8 +116,8 @@ export const listEntriesTool: McpToolConfig = {
           },
         ],
       };
-    } catch (error: any) {
-      throw new Error(`Failed to retrieve entries: ${error.message}`);
+    } catch (error) {
+      sanitizeError("Failed to retrieve entries", error);
     }
   },
 };
@@ -142,8 +143,8 @@ export const deleteEntryTool: McpToolConfig = {
           },
         ],
       };
-    } catch (error: any) {
-      throw new Error(`Failed to delete entry: ${error.message}`);
+    } catch (error) {
+      sanitizeError("Failed to delete entry", error);
     }
   },
 };
@@ -207,8 +208,8 @@ export const editEntryTool: McpToolConfig = {
           },
         ],
       };
-    } catch (error: any) {
-      throw new Error(`Failed to edit entry: ${error.message}`);
+    } catch (error) {
+      sanitizeError("Failed to edit entry", error);
     }
   },
 };
